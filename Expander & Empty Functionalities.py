@@ -3,17 +3,20 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-cases = []
-for _ in range(100):
-    cases.append(np.random.randint(1,7))
+# Simulate 100 dice rolls
+cases = [np.random.randint(1, 7) for _ in range(100)]
 
-data  = []
-for i in range(1,7):
-    data.append(cases.count(i))
+# Count occurrences for each face (1 to 6)
+data = [cases.count(i) for i in range(1, 7)]
 
-st.header('Frequency of getting a Face ')
+# Create a DataFrame with labels
+df = pd.DataFrame({
+    'Face': [1, 2, 3, 4, 5, 6],
+    'Frequency': data
+})
 
-st.bar_chart({'data' : data})
+st.header('🎲 Frequency of Dice Faces (1 to 6)')
+st.bar_chart(df.set_index('Face'))  # Set 'Face' as index
 
 with st.expander('See Explanation'):
     st.write('''
