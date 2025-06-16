@@ -20,7 +20,7 @@ if image_file is not None:
         'file_size': image_file.size
     })
     img = Image.open(image_file)
-    st.image(img, caption="Uploaded Image", use_column_width=True)
+    st.image(img, caption="Uploaded Image", use_container_width=True)
 
 # -----------------------------------------------
 # 2. Upload and Play Audio
