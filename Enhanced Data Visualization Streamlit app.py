@@ -512,3 +512,28 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Chatbot widget (Knowbo.ai)
+st.markdown("""
+<script>
+!function(){
+    const e=document.createElement("style");
+    e.innerHTML="@media (max-width: 768px) {iframe.chatbot-iframe.open {width: 90% !important;height: 100% !important;right: 0 !important;bottom: 0 !important;} iframe.chatbot-iframe.close {width: 150px !important;height: 150px !important;right: 20px !important;bottom: 20px !important;}}",
+    document.head.appendChild(e);
+    function t(){return Math.random().toString(36).substr(2,10)}
+    function n(){let e=sessionStorage.getItem("userId");return e||(e=t(),sessionStorage.setItem("userId",e)),e}
+    window.addEventListener("message",(function(e){
+        "setIframeDimensions"===e.data.action&&(a.style.height=e.data.height,a.style.width=e.data.width,
+        "open"===e.data.state?(a.classList.add("open"),a.classList.remove("close")):
+        "close"===e.data.state&&(a.classList.add("close"),a.classList.remove("open")))}),!1);
+    const a=document.createElement("iframe");
+    a.style.border="none",a.style.width="auto",a.style.height="auto",a.style.display="block",
+    a.style.overflow="hidden",a.style.position="fixed",a.style.right="20px",a.style.bottom="20px",
+    a.style.zIndex="1000",a.style.transition="width 0.3s ease, height 0.3s ease",
+    a.classList.add("chatbot-iframe","close");
+    const o=n();
+    a.src="https://dashboard.knowbo.ai/chatbot?userId="+encodeURIComponent(o)+"&botid="+encodeURIComponent("fdaf0563-bde7-45fe-b628-113e360a8411"),
+    document.body.appendChild(a)
+}();
+</script>
+""", unsafe_allow_html=True)
+
